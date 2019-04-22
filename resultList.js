@@ -38,8 +38,8 @@ class ResultList extends Component {
 
   loadResults = () => {
     if (this.state.display) {
-      const path = `http://5cad37b601a0b80014dcd321.mockapi.io/api/v1/results/`;
-      // const path = `http://localhost:8000/results/`;
+      // const path = `http://5cad37b601a0b80014dcd321.mockapi.io/api/v1/results/`;
+      const path = `http://localhost:8000/results/`;
       Axios.get(path, {
         params: {
           query: this.state.query

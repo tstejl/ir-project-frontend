@@ -9,6 +9,8 @@ class SearchBar extends Component {
 
   state = {
     small: false,
+    words: "",
+    query: ""
   };
 
   warning = () => {
@@ -21,7 +23,7 @@ class SearchBar extends Component {
       return;
     }
     this.setState({
-      query: v
+      query: this.state.words
     }, () => {this.props.callback(this.state.query)})
       ;
   }
@@ -35,12 +37,19 @@ class SearchBar extends Component {
   }
 
   directSearch = (v) => {
-    this.searchQuery(v);
-    this.changeInput(v);
+    this.setState(
+      {
+        words: v,
+        query: v,
+      }, ()=>{
+        this.searchQuery(v);
+      }
+    )
   }
 
-  changeInput = (v) => {
-    return v;
+
+  handleChange = (query) => {
+    this.setState({words: query.target.value});
   }
 
   render() {
@@ -55,6 +64,8 @@ class SearchBar extends Component {
           size={size}
           allowClear
           onSearch={value => this.searchQuery(value)}
+          onChange={(e) => {this.handleChange(e)}}
+          value={this.state.words}
         />
         <HistoryTags query={this.state.query} callback={this.directSearch}/>
       </React.Fragment>

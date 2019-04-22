@@ -68,11 +68,16 @@ class ResultList extends Component {
     ) : (
         <Empty />
       );
+    let retrievalTitle = this.state.loading ? (
+      <Title />
+    ):(
+      <Title level={4} >Retrieved {this.state.results.length} results, takes about {Math.round(this.state.time * 100) / 100} secs</Title>
+    );
     let toBeReturned = this.state.display ? (
       <React.Fragment>
         <br /><br />
         <div align="center">
-          <Title level={4} >Retrieved {this.state.results.length} results, takes about {Math.round(this.state.time * 100) / 100} secs</Title>
+          {retrievalTitle}
         </div>
         <div align="left">
           <List

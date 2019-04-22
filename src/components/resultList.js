@@ -11,7 +11,7 @@ class ResultList extends Component {
     results: [],
     query: "",
     display: false,
-    byDate: false,
+    time: 0,
   };
 
   _isMounted = false;
@@ -36,15 +36,16 @@ class ResultList extends Component {
 
   loadResults = () => {
     if (this.state.display) {
-      let path = `http://5cad37b601a0b80014dcd321.mockapi.io/api/v1/results/`;
-
+      //const path = `http://5cad37b601a0b80014dcd321.mockapi.io/api/v1/results/`;
+      const path = `http://localhost:8000/results/`;
       Axios.get(path, {
         params: {
           query: this.state.query
         }
       }).then(r => {
         this.setState({
-          results: r.data,
+          results: r.data.results,
+          time: r.data.time,
         })
       });
     }
@@ -69,7 +70,7 @@ class ResultList extends Component {
       <React.Fragment>
         <br /><br />
         <div align="center">
-          <Title level={4} >Retrieved {this.state.results.length} results, takes about 1 hour</Title>
+          <Title level={4} >Retrieved {this.state.results.length} results, takes about {Math.round(this.state.results.time * 100) / 100} secs</Title>
         </div>
         <div align="left">
           <List

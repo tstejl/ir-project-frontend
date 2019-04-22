@@ -48,7 +48,7 @@ class SearchBar extends Component {
     let titleLvl = this.state.small ? 4:1;
     return (
       <React.Fragment>
-        <Title level={titleLvl}>Tweeter Searcher</Title>
+        <Title level={titleLvl}>Twitter Searcher</Title>
         <Search
           placeholder="query @user #hashtag"
           enterButton="Search"

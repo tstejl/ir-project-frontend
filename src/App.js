@@ -32,11 +32,7 @@ class App extends Component {
     let size = this.state.show ? 65 : 200;
     return (
       <Layout style={{ background: '#fff'}}>
-        {/* <Header style={{ position: 'fixed', zIndex: 1, width: '100%', background: 'white' }}>
-          <div className="logo" />
-        </Header> */}
-        <Content style={{ padding: '0 50px', marginTop: 64 }}>
-
+        <Content style={{ padding: '0 50px', marginTop: 105 }}>
           <div style={{ padding: 24, minHeight: 800 }}>
             <Row>
               <Col span={12} offset={6}>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, Empty, Switch } from "antd";
+import { List, Empty } from "antd";
 import { Typography } from "antd";
 
 import Axios from "axios";
@@ -70,7 +70,7 @@ class ResultList extends Component {
       <React.Fragment>
         <br /><br />
         <div align="center">
-          <Title level={4} >Retrieved {this.state.results.length} results, takes about {Math.round(this.state.results.time * 100) / 100} secs</Title>
+          <Title level={4} >Retrieved {this.state.results.length} results, takes about {Math.round(this.state.time * 100) / 100} secs</Title>
         </div>
         <div align="left">
           <List

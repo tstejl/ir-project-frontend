@@ -12,6 +12,7 @@ class ResultList extends Component {
     query: "",
     display: false,
     time: 0,
+    loading: true,
   };
 
   _isMounted = false;
@@ -24,6 +25,7 @@ class ResultList extends Component {
     this.setState({
       query: newProps.query,
       display: newProps.display,
+      loading: true,
     }, () => {
       console.log(this.state.query);
       this.loadResults();
@@ -36,7 +38,7 @@ class ResultList extends Component {
 
   loadResults = () => {
     if (this.state.display) {
-      //const path = `http://5cad37b601a0b80014dcd321.mockapi.io/api/v1/results/`;
+      // const path = `http://5cad37b601a0b80014dcd321.mockapi.io/api/v1/results/`;
       const path = `http://localhost:8000/results/`;
       Axios.get(path, {
         params: {
@@ -46,6 +48,7 @@ class ResultList extends Component {
         this.setState({
           results: r.data.results,
           time: r.data.time,
+          loading: false,
         })
       });
     }
@@ -57,7 +60,7 @@ class ResultList extends Component {
       item => (
         <List.Item>
           <List.Item.Meta
-            title={"@" + item.name}
+            title={item.name}
           />
           {item.tweet}
         </List.Item>
@@ -80,6 +83,7 @@ class ResultList extends Component {
             size="large"
             dataSource={results}
             renderItem={resultsList}
+            loading={this.state.loading}
           />
         </div>
 

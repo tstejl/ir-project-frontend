@@ -58,7 +58,6 @@ class ResultList extends Component {
         <List.Item>
           <List.Item.Meta
             title={"@" + item.name}
-            description={"Posted on: " + item.date + ", Score: " + item.score}
           />
           {item.tweet}
         </List.Item>
